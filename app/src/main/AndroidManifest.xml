@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Mil_app">
         <activity
+            android:name=".FalseAnswer"
+            android:exported="false" />
+        <activity
+            android:name=".CorrectAnswer"
+            android:exported="false" />
+        <activity
             android:name=".Questions"
             android:exported="false" />
         <activity

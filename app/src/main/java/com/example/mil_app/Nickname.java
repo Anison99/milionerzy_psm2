@@ -44,7 +44,7 @@ public class Nickname extends AppCompatActivity {
     // ----- METHODS ------
 
     // metoda pozwalająca uruchomić następne activity
-    private void openQuestions() {
+    void openQuestions() {
         Intent intent = new Intent(this, Questions.class);
         startActivity(intent);
     }
