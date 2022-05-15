@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
 
     // metoda pozwalająca uruchomić następne activity
     private void openRules() {
-        Intent intent = new Intent(this, Rules.class);
+        Intent intent = new Intent(this, RulesActivity.class);
         startActivity(intent);
     }
 }

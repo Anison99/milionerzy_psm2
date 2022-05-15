@@ -10,7 +10,7 @@ import android.widget.ImageView;
 
 import com.google.android.material.textfield.TextInputEditText;
 
-public class Nickname extends AppCompatActivity {
+public class NicknameActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +45,7 @@ public class Nickname extends AppCompatActivity {
 
     // metoda pozwalająca uruchomić następne activity
     void openQuestions() {
-        Intent intent = new Intent(this, Questions.class);
+        Intent intent = new Intent(this, QuestionsActivity.class);
         startActivity(intent);
     }
 }

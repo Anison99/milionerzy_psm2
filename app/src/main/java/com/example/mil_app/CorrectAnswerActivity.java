@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
-public class CorrectAnswer extends AppCompatActivity {
+public class CorrectAnswerActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +31,7 @@ public class CorrectAnswer extends AppCompatActivity {
     }
 
     private void openQuestions() {
-        Intent intent = new Intent(this, Questions.class);
+        Intent intent = new Intent(this, QuestionsActivity.class);
         startActivity(intent);
     }
 }
