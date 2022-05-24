@@ -10,19 +10,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Mil_app">
         <activity
-            android:name=".FalseAnswer"
+            android:name=".FalseAnswerActivity"
             android:exported="false" />
         <activity
-            android:name=".CorrectAnswer"
+            android:name=".CorrectAnswerActivity"
             android:exported="false" />
         <activity
-            android:name=".Questions"
+            android:name=".QuestionsActivity"
             android:exported="false" />
         <activity
-            android:name=".Nickname"
+            android:name=".NicknameActivity"
             android:exported="false" />
         <activity
-            android:name=".Rules"
+            android:name=".RulesActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

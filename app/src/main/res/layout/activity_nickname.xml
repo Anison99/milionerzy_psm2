@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/darkBlue"
-    tools:context=".Nickname">
+    tools:context=".NicknameActivity">
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout2"
@@ -22,7 +22,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/darkBlue"
-            android:hint="DUPA"
+            android:hint="nickname"
             android:textColor="@color/white"
             android:textColorHint="@color/white"
             android:textSize="30dp" />
