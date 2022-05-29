@@ -1,4 +1,4 @@
-package com.example.mil_app;
+package ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+
+import com.example.mil_app.R;
 
 public class CorrectAnswerActivity extends AppCompatActivity {
 

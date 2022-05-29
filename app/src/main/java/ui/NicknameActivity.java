@@ -1,4 +1,4 @@
-package com.example.mil_app;
+package ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import com.example.mil_app.R;
 import com.google.android.material.textfield.TextInputEditText;
 
 public class NicknameActivity extends AppCompatActivity {

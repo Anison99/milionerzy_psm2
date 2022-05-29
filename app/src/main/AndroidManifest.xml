@@ -10,22 +10,22 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Mil_app">
         <activity
-            android:name=".FalseAnswerActivity"
+            android:name="ui.FalseAnswerActivity"
             android:exported="false" />
         <activity
-            android:name=".CorrectAnswerActivity"
+            android:name="ui.CorrectAnswerActivity"
             android:exported="false" />
         <activity
-            android:name=".QuestionsActivity"
+            android:name="ui.QuestionsActivity"
             android:exported="false" />
         <activity
-            android:name=".NicknameActivity"
+            android:name="ui.NicknameActivity"
             android:exported="false" />
         <activity
-            android:name=".RulesActivity"
+            android:name="ui.RulesActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name="ui.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
