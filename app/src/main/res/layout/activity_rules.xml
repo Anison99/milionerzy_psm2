@@ -72,4 +72,15 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.703" />
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="131dp"
+        android:layout_height="121dp"
+        app:layout_constraintBottom_toBottomOf="@+id/agreeingButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.174"
+        app:srcCompat="@drawable/milionerzy_logo" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
