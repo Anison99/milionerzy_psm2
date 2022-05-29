@@ -37,7 +37,7 @@ public class RulesActivity extends AppCompatActivity {
 
     // metoda pozwalająca uruchomić następne activity
     private void openRules() {
-        Intent intent = new Intent(this, NicknameActivity.class);
+        Intent intent = new Intent(this, QuestionsActivity.class);
         startActivity(intent);
     }
 }
