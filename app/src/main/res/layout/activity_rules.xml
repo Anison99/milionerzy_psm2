@@ -37,11 +37,11 @@
         android:id="@+id/hint1Label"
         android:layout_width="204dp"
         android:layout_height="64dp"
-        android:text="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa."
+        android:text="Wybierz spośród dwóch odpowiedzi, które pozostały do wyboru."
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.758"
+        app:layout_constraintHorizontal_bias="0.685"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.394" />
@@ -50,26 +50,26 @@
         android:id="@+id/hint2Label"
         android:layout_width="200dp"
         android:layout_height="67dp"
-        android:text="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa."
+        android:text="Skorzystaj z pomocy publiczności- ich podpowiedzi i sugestie mogą być cenne."
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.744"
+        app:layout_constraintHorizontal_bias="0.672"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.549" />
+        app:layout_constraintVertical_bias="0.554" />
 
     <TextView
         android:id="@+id/hint3Label"
-        android:layout_width="200dp"
-        android:layout_height="63dp"
-        android:text="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa."
+        android:layout_width="199dp"
+        android:layout_height="85dp"
+        android:text="Masz wśród swoich znajomych/ rodziny speca od wszyytskiego? Skorzystaj z jego pomocy i zwiększ swoje szanse na wygranie miliona!"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.744"
+        app:layout_constraintHorizontal_bias="0.672"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.705" />
+        app:layout_constraintVertical_bias="0.703" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
