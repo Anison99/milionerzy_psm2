@@ -7,13 +7,12 @@ public class FiftyFifty {
     private List<String> lAnswers;
     private String lCAnswer;
     private List<String> newLAnswers;
-    public FiftyFifty(List<String> answers,String cAnswer){
+    public FiftyFifty(List<String> answers,byte cAnswer){
         lAnswers = answers;
-        lCAnswer = cAnswer;
+        lCAnswer = String.valueOf(cAnswer);
     }
     public List<String> getlAnswers(){
         newLAnswers.add(lCAnswer);
-        lAnswers.remove(lCAnswer);
         Random rand =new Random();
         String temp = lAnswers.get(rand.nextInt());
         newLAnswers.add(temp);

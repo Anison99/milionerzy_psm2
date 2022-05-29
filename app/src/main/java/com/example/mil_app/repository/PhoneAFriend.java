@@ -14,16 +14,16 @@ public class PhoneAFriend {
         lAnswers = answers;
         lCAnswer = cAnswer;
     }
+
     public String getPAFAnswer(){
         Random rand = new Random();
+        // Siema tu jak masz numer pytania mniejszy niż 5 to zawsze dobra odpowiedź jest zwracana
         if(lqNumber<5){
             return lCAnswer;
         }
+        // A tu nie
         else{
-            String s = lAnswers.get(rand.nextInt());
-            System.out.print(lAnswers);
-            return s;
-
+            return lAnswers.get(rand.nextInt());
         }
         //TODO optimalization
     }
