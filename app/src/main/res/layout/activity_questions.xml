@@ -111,9 +111,25 @@
         android:textSize="60px"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.202" />
+        app:layout_constraintVertical_bias="0.25" />
+
+    <TextView
+        android:id="@+id/hintTextLabel"
+        android:layout_width="284dp"
+        android:layout_height="36dp"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textSize="50px"
+        android:text="podpowiedź"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.516"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.137" />
 
     <Button
         android:id="@+id/checkButton"
@@ -171,4 +187,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.989" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

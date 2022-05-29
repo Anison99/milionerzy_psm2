@@ -1,31 +1,29 @@
 package com.example.mil_app.database;
 
-import android.content.res.Resources;
-
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class Question {
-	
+
 	private String[] answersArray = new String[4];
 	private byte correct;
 	private int prize;
 	private String questionString;
+	private int questionNumber;
 
-	public Question(int questionNumber, String question, String[] answersArray, byte correct, int prize) {
-	}
-
+	/**
+	 *
+	 * @return {@link String} literal of question. Ready to be inserted into
+	 *         question text field.
+	 */
 	public String getQuestionString() {
 		return questionString;
 	}
-	
-	private enum Answer {
+
+	public enum Answer {
 		FIRST, SECOND, THIRD, FOURTH
 	}
-	
+
 	/**
 	 *
 	 * @param which {@link Answer} enum poining to which question from array do we
@@ -46,11 +44,7 @@ public class Question {
 				return null;
 		}
 	}
-	
-	public String[] getAnswersArray() {
-		return answersArray;
-	}
-	
+
 	/**
 	 *
 	 * @return Correct answer number from {@code 1} to {@code 4} of this
@@ -59,54 +53,55 @@ public class Question {
 	public byte getCorrect() {
 		return correct;
 	}
-	
+
+	public String[] getAnswersArray() {
+		return answersArray;
+	}
+
+	/**
+	 *
+	 * @return which prize was this question associated with
+	 */
 	public int getPrize() {
 		return prize;
 	}
-	
-	protected Question(ResultSet resultSet, int prize) {
+
+	public Question(int questionNumber,String questionString, String[] answersArray, byte correct, int prize) {
+		this.answersArray = answersArray;
+		this.correct = correct;
+		this.questionString = questionString;
+		this.prize = prize;
+		this.questionNumber = questionNumber;
+
+	}
+
+	public int getQuestionNumber() {
+		return questionNumber;
+	}
+
+	public Question(ResultSet resultSet, int prize) {
 		try {
 			resultSet.first();
 			for (int i = 0; i < 3; i++) {
 				this.answersArray[i] = resultSet.getString(i + 1);
 			}
+
 			this.correct = resultSet.getByte("correct");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
-	
-	/**
-	 *
-	 * @param prize Prize money expected for this question as in database
-	 * @return {@link Question} object
-	 */
-	public static Question getRandomQuestionfromDatabase(int prize) {
-		Connection connection = null;
-		try {
-			StringBuilder sB = new StringBuilder("jdbc:sqlite:");
-			sB.append(System.getProperty("user.dir")); // project location
-			sB.append("app/src/main/res/raw/milionerzy.db");
-			connection = DriverManager.getConnection(sB.toString());
-			PreparedStatement statement = connection
-					.prepareStatement("SELECT question,answer1,answer2,answer3,answer4,correct"
-							+ " FROM Questions WHERE prize=" + prize + " ORDER BY random() LIMIT 1;");
-			ResultSet results = statement.executeQuery();
-			return new Question(results, prize);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				if (connection != null) {
-					connection.close();
-				}
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
+
+	@Override
+	public String toString() {
+		StringBuilder sB = new StringBuilder(this.questionString);
+		sB.append(System.lineSeparator());
+		for (String s : answersArray) {
+			sB.append(s);
+			sB.append(System.lineSeparator());
 		}
-		return null;
+		sB.append("Correct: " + this.correct);
+		return sB.toString();
 	}
 
-//	public static Question getRandomFromCSV
-	
 }
