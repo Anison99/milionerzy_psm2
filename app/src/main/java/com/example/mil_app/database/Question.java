@@ -14,7 +14,10 @@ public class Question {
 	private byte correct;
 	private int prize;
 	private String questionString;
-	
+
+	public Question(int questionNumber, String question, String[] answersArray, byte correct, int prize) {
+	}
+
 	public String getQuestionString() {
 		return questionString;
 	}
