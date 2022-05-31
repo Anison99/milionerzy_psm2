@@ -1,5 +1,6 @@
 package ui;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -34,6 +35,7 @@ public class QuestionsActivity extends AppCompatActivity {
 	Button help1B; // tel do przyjaciela
 	Button help2B; // publicznosc
 	Button help3B; // 50/50
+
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -73,10 +75,12 @@ public class QuestionsActivity extends AppCompatActivity {
 			}
 		});
 	}
-	// ----- METHODS ------
-
+	// -----
 	private static Question currentQuestion = null;
 	private Boolean isCorrectAnswerSelected = null;
+	// -----
+
+	// ----- METHODS ------
 
 	public static Question getCurrentQuestion() {
 		return currentQuestion;
@@ -113,55 +117,51 @@ public class QuestionsActivity extends AppCompatActivity {
 		answer4B.setBackgroundColor(Color.GREEN);
 	}
 
-	/*
+	/**
+	 * Fix this piece of code- find alternative for this phrase
+	 * @param view
+	 */
 	private void answerButtonSelected(View view) { 						// <------------------
 		Button selectedButton = (Button) findViewById(view.getId());
-		this.isCorrectAnswerSelected = switch (currentQuestion.getCorrect()) {
-			case 1:
-				boolean b = (selectedButton == answer1B) ? true : false;
-			case 2 :
-				boolean b1 = (selectedButton == answer2B) ? true : false;
-			case 3 :
-				boolean b2 = (selectedButton == answer3B) ? true : false;
-			case 4 :
-				boolean b3 = (selectedButton == answer4B) ? true : false;
-			default: false;
-
+	/*	this.isCorrectAnswerSelected = switch (currentQuestion.getCorrect()) {
+			case 1 -> selectedButton == answer1B;
+			case 2 -> selectedButton == answer1B;
+			case 3 -> selectedButton == answer1B;
+			case 4 -> selectedButton == answer1B;
+			default -> false;
 		};
+
+	 */
 		resetButtonsColor();
 		selectedButton.setBackgroundColor(Color.GREEN);
 	}
-	 */
+
 
 	// metoda sprawdzająca które activity uruchomić (dobra/zła odpowiedź)
-	/* private void chceckAnswer() {
+	private void chceckAnswer() {
 
-		try {
-			if (isCorrectAnswerSelected == null) {
+		if (isCorrectAnswerSelected == null) {
+			return;
+		} else if (isCorrectAnswerSelected) {
+			if (currentQuestion.getPrize() != 1000000) {
+				setUpQuestion();
 				return;
-			} else if (isCorrectAnswerSelected) {
-				if (currentQuestion.getPrize() != 1000000) {
-					setUpQuestion();
-					return;
-				}
-				//root = FXMLLoader.load(getClass().getResource("summary.fxml"));
-				Intent intent = new Intent(this, CorrectAnswerActivity.class); // -- okno wygrania miliona
-				startActivity(intent);
-			} else {
-				//root = FXMLLoader.load(getClass().getResource("loose.fxml"));
-				Intent intent = new Intent(this, FalseAnswerActivity.class); // -- okno przegranego
-				startActivity(intent);
-
 			}
+			//root = FXMLLoader.load(getClass().getResource("summary.fxml"));
+			Intent intent = new Intent(this, CorrectAnswerActivity.class); // -- okno wygrania miliona
+			startActivity(intent);
+		} else {
+			//root = FXMLLoader.load(getClass().getResource("loose.fxml"));
+			Intent intent = new Intent(this, FalseAnswerActivity.class); // -- okno przegranego
+			startActivity(intent);
 
-		} catch (IOException e) { // <-----------------------
-			e.printStackTrace();
 		}
+
 		Intent intent = new Intent(this, FalseAnswerActivity.class);
 		startActivity(intent);
 	}
 
-	 */
+
 
 	// ---- KOŁA RATUNKOWE ----
 
