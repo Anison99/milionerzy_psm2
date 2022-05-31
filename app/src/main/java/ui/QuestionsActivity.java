@@ -251,7 +251,5 @@ public class QuestionsActivity extends AppCompatActivity {
 						currentQuestion.getAnswersArray()[rand.ints(0, 3).findFirst().getAsInt()]);
 			}
 		}
-
-
 	}
 }

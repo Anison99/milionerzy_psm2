@@ -13,7 +13,7 @@
             android:name="ui.FalseAnswerActivity"
             android:exported="false" />
         <activity
-            android:name="ui.CorrectAnswerActivity"
+            android:name="ui.WinActivity"
             android:exported="false" />
         <activity
             android:name="ui.QuestionsActivity"

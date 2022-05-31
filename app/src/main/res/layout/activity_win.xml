@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/darkBlue"
-    tools:context="ui.CorrectAnswerActivity">
+    tools:context="ui.WinActivity"
+    tools:ignore="MissingDefaultResource">
 
     <ImageView
         android:id="@+id/winView"

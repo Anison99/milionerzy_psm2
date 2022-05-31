@@ -15,7 +15,7 @@ public class CorrectAnswerActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_correct_answer);
+        setContentView(R.layout.activity_win);
 
         //ramka pokazująca wygraną
         ImageView correctV = (ImageView) findViewById(R.id.winView);
