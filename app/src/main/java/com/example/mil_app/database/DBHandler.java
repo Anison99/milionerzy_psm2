@@ -4,12 +4,22 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.provider.BaseColumns;
 
 import androidx.annotation.Nullable;
 
 public class DBHandler extends SQLiteOpenHelper{
 
-        private static final String QUESTIONS= "questionsdb"; // database name
+    public DBHandler(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
+        super(context, DATABASE_NAME, null, DATABASE_VERSION);
+    }
+    public static final int DATABASE_VERSION = 1;
+    private static final String DATABASE_NAME = "milionerzy.db"; // database name
+
+    /**
+     * inner class that defines the table contents
+     */
+    public static class FeedEntry implements BaseColumns{
         private static final String ID_COL = "id"; // id column
         private static final String QUESTION = "question"; // show question
         private static final String ANSWER_1 = "answer1"; // answers
@@ -17,9 +27,15 @@ public class DBHandler extends SQLiteOpenHelper{
         private static final String ANSWER_3 = "answer3";
         private static final String ANSWER_4 = "answer4";
 
-    public DBHandler(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
-        super(context, name, factory, version);
     }
+    private static final String SQL_CREATE_ENTRIES = "CREATE TABLE " + DATABASE_NAME + " ("
+            + FeedEntry.ID_COL + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+            + FeedEntry.QUESTION + " TEXT,"
+            + FeedEntry.ANSWER_1 + " TEXT,"
+            + FeedEntry.ANSWER_2 + " TEXT,"
+            + FeedEntry.ANSWER_3 + " TEXT,"
+            + FeedEntry.ANSWER_4 + " TEXT)";
+    private static final String SQL_DELETE_ENTRIES = null;
 
     /**
      * making rows and columns in database
@@ -27,17 +43,21 @@ public class DBHandler extends SQLiteOpenHelper{
      */
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String query = "CREATE TABLE " + QUESTIONS + " ("
-                + ID_COL + " INTEGER PRIMARY KEY AUTOINCREMENT, "
-                + QUESTION + " TEXT,"
-                + ANSWER_1 + " TEXT,"
-                + ANSWER_2 + " TEXT,"
-                + ANSWER_3 + " TEXT,"
-                + ANSWER_4 + " TEXT)";
-        db.execSQL(query);
-
+        db.execSQL(SQL_CREATE_ENTRIES);
     }
-    public void addNewQuestion(String questionName, String ans1, String ans2, String ans3, String ans4) {
+
+    @Override
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        db.execSQL(SQL_DELETE_ENTRIES);
+        onCreate(db);
+    }
+}
+
+
+
+
+// ---------------- FOR TESTS -------------------
+ /*  public void addNewQuestion(String questionName, String ans1, String ans2, String ans3, String ans4) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
 
@@ -51,11 +71,4 @@ public class DBHandler extends SQLiteOpenHelper{
         db.close();
 
     }
-
-    @Override
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE IF EXISTS " + QUESTIONS);
-        onCreate(db);
-
-    }
-}
+*/
