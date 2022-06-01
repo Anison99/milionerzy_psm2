@@ -1,14 +1,16 @@
 package ui;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.mil_app.R;
+import com.example.mil_app.database.CSVController;
+import com.example.mil_app.database.Question;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -32,6 +34,12 @@ public class MainActivity extends AppCompatActivity {
                 openRules();
             }
         });
+        
+        
+        Question q = CSVController.getRandomQuestion(1);
+        System.out.println(q);
+        System.out.println(q.getAnswer(Question.Answer.FIRST));
+        
     }
 
     // ----- METHODS ------
