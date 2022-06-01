@@ -27,7 +27,7 @@ public class QuestionsActivity extends AppCompatActivity {
 	TextView moneyL;
 	TextView numberQestT;
 	TextView hint;
-
+	
 	Button answer1B;
 	Button answer2B;
 	Button answer3B;
@@ -35,57 +35,58 @@ public class QuestionsActivity extends AppCompatActivity {
 	Button help1B; // tel do przyjaciela
 	Button help2B; // publicznosc
 	Button help3B; // 50/50
-
-
+	
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_questions);
-
+		
 		// ramka z pytaniami
 		ImageView questionFrameV = (ImageView) findViewById(R.id.questionImage);
 		questionFrameV.setImageResource(R.drawable.question_frame);
-
+		
 		// labele z numerem pytań oraz kwotą do wygrania
 		TextView numberQestT = (TextView) findViewById(R.id.questionNumberLabel);
 		TextView moneyL = (TextView) findViewById(R.id.moneyLabel);
 		// pytanie
 		questionT = (TextView) findViewById(R.id.questionText);
-
+		
 		// przyciski z odpowiedziami
 		Button answer1B = (Button) findViewById(R.id.answer1Button);
 		Button answer2B = (Button) findViewById(R.id.answer2Button);
 		Button answer3B = (Button) findViewById(R.id.answer3Button);
 		Button answer4B = (Button) findViewById(R.id.answer4Button);
-
+		
 		//przyciski na koła ratunkowe
 		Button help1B = (Button) findViewById(R.id.help1Button);
 		Button help2B = (Button) findViewById(R.id.help2Button);
 		Button help3B = (Button) findViewById(R.id.help3Button);
 		//	TextView hint = (TextView) findViewById(R.id.hintTextLabel); //<------------
-
+		
 		// przycisk sprawdzający
 		Button checkB = (Button) findViewById(R.id.checkButton);
-
+		
 		// przycisk uruchamiający nastepne activity
 		checkB.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-	//			chceckAnswer();                        //<------------
+				//			chceckAnswer();                        //<------------
 			}
 		});
 	}
+	
 	// -----
 	private static Question currentQuestion = null;
 	private Boolean isCorrectAnswerSelected = null;
 	// -----
-
+	
 	// ----- METHODS ------
-
+	
 	public static Question getCurrentQuestion() {
 		return currentQuestion;
 	}
-
+	
 	// pobieranie danych z csv i umieszczenie w miejscu txt i przycisków
 	private void setUpQuestion() {
 		if (currentQuestion == null) {
@@ -108,7 +109,7 @@ public class QuestionsActivity extends AppCompatActivity {
 		this.answer4B.setVisibility(View.INVISIBLE);
 		isCorrectAnswerSelected = null;
 	}
-
+	
 	// zmiana koloru po kliknieciu
 	private void resetButtonsColor() {
 		answer1B.setBackgroundColor(Color.GREEN);
@@ -116,12 +117,13 @@ public class QuestionsActivity extends AppCompatActivity {
 		answer3B.setBackgroundColor(Color.GREEN);
 		answer4B.setBackgroundColor(Color.GREEN);
 	}
-
+	
 	/**
 	 * Fix this piece of code- find alternative for this phrase
+	 *
 	 * @param view
 	 */
-	private void answerButtonSelected(View view) { 						// <------------------
+	private void answerButtonSelected(View view) {                        // <------------------
 		Button selectedButton = (Button) findViewById(view.getId());
 	/*	this.isCorrectAnswerSelected = switch (currentQuestion.getCorrect()) {
 			case 1 -> selectedButton == answer1B;
@@ -135,11 +137,11 @@ public class QuestionsActivity extends AppCompatActivity {
 		resetButtonsColor();
 		selectedButton.setBackgroundColor(Color.GREEN);
 	}
-
-
+	
+	
 	// metoda sprawdzająca które activity uruchomić (dobra/zła odpowiedź)
 	private void chceckAnswer() {
-
+		
 		if (isCorrectAnswerSelected == null) {
 			return;
 		} else if (isCorrectAnswerSelected) {
@@ -154,17 +156,16 @@ public class QuestionsActivity extends AppCompatActivity {
 			//root = FXMLLoader.load(getClass().getResource("loose.fxml"));
 			Intent intent = new Intent(this, FalseAnswerActivity.class); // -- okno przegranego
 			startActivity(intent);
-
+			
 		}
-
+		
 		Intent intent = new Intent(this, FalseAnswerActivity.class);
 		startActivity(intent);
 	}
-
-
-
+	
+	
 	// ---- KOŁA RATUNKOWE ----
-
+	
 	// -- pół na pół
 	private void fireFiftyFiftyButton() {
 		this.help3B.setVisibility(View.INVISIBLE);
@@ -180,7 +181,7 @@ public class QuestionsActivity extends AppCompatActivity {
 				this.answer4B.setVisibility(View.INVISIBLE);
 		}
 	}
-
+	
 	// -- pytanie do publiczności
 	@RequiresApi(api = Build.VERSION_CODES.N)
 	private void fireAskAudienceButton() {
@@ -209,7 +210,7 @@ public class QuestionsActivity extends AppCompatActivity {
 				iter++;
 			}
 		} while (results.size() != 4);
-
+		
 		switch (currentQuestion.getCorrect()) {
 			case 1:
 				this.answer1B.setText(this.answer1B.getText() + " " + results.get(0));
@@ -236,7 +237,7 @@ public class QuestionsActivity extends AppCompatActivity {
 				this.answer3B.setText(this.answer4B.getText() + " " + results.get(3));
 		}
 	}
-
+	
 	private void fireCallFriendButton() {
 		this.help1B.setVisibility(View.INVISIBLE);
 		Random rand = new Random();
