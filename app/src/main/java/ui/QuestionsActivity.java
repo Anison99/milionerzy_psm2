@@ -1,6 +1,5 @@
 package ui;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -17,7 +16,6 @@ import com.example.mil_app.R;
 import com.example.mil_app.database.CSVController;
 import com.example.mil_app.database.Question;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -36,7 +34,6 @@ public class QuestionsActivity extends AppCompatActivity {
 	Button help2B; // publicznosc
 	Button help3B; // 50/50
 	
-	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -47,10 +44,10 @@ public class QuestionsActivity extends AppCompatActivity {
 		questionFrameV.setImageResource(R.drawable.question_frame);
 		
 		// labele z numerem pytań oraz kwotą do wygrania
-		TextView numberQestT = (TextView) findViewById(R.id.questionNumberLabel);
-		TextView moneyL = (TextView) findViewById(R.id.moneyLabel);
+		TextView numberQestT = (TextView) findViewById(R.id.questionNumberTextView);
+		TextView moneyL = (TextView) findViewById(R.id.currentPrizeTextView);
 		// pytanie
-		questionT = (TextView) findViewById(R.id.questionText);
+		questionT = (TextView) findViewById(R.id.questionStringTextView);
 		
 		// przyciski z odpowiedziami
 		Button answer1B = (Button) findViewById(R.id.answer1Button);
@@ -59,13 +56,13 @@ public class QuestionsActivity extends AppCompatActivity {
 		Button answer4B = (Button) findViewById(R.id.answer4Button);
 		
 		//przyciski na koła ratunkowe
-		Button help1B = (Button) findViewById(R.id.help1Button);
-		Button help2B = (Button) findViewById(R.id.help2Button);
-		Button help3B = (Button) findViewById(R.id.help3Button);
+		Button help1B = (Button) findViewById(R.id.callFriendButton);
+		Button help2B = (Button) findViewById(R.id.askAudienceButton);
+		Button help3B = (Button) findViewById(R.id.fiftyFiftyButton);
 		//	TextView hint = (TextView) findViewById(R.id.hintTextLabel); //<------------
 		
 		// przycisk sprawdzający
-		Button checkB = (Button) findViewById(R.id.checkButton);
+		Button checkB = (Button) findViewById(R.id.confirmButton);
 		
 		// przycisk uruchamiający nastepne activity
 		checkB.setOnClickListener(new View.OnClickListener() {
@@ -76,12 +73,8 @@ public class QuestionsActivity extends AppCompatActivity {
 		});
 	}
 	
-	// -----
 	private static Question currentQuestion = null;
 	private Boolean isCorrectAnswerSelected = null;
-	// -----
-	
-	// ----- METHODS ------
 	
 	public static Question getCurrentQuestion() {
 		return currentQuestion;
@@ -118,13 +111,10 @@ public class QuestionsActivity extends AppCompatActivity {
 		answer4B.setBackgroundColor(Color.GREEN);
 	}
 	
-	/**
-	 * Fix this piece of code- find alternative for this phrase
-	 *
-	 * @param view
-	 */
-	private void answerButtonSelected(View view) {                        // <------------------
+	private void answerButtonSelected(View view) {
 		Button selectedButton = (Button) findViewById(view.getId());
+		resetButtonsColor();
+		selectedButton.setBackgroundColor(Color.GREEN);
 	/*	this.isCorrectAnswerSelected = switch (currentQuestion.getCorrect()) {
 			case 1 -> selectedButton == answer1B;
 			case 2 -> selectedButton == answer1B;
@@ -132,15 +122,12 @@ public class QuestionsActivity extends AppCompatActivity {
 			case 4 -> selectedButton == answer1B;
 			default -> false;
 		};
-
 	 */
-		resetButtonsColor();
-		selectedButton.setBackgroundColor(Color.GREEN);
 	}
 	
 	
 	// metoda sprawdzająca które activity uruchomić (dobra/zła odpowiedź)
-	private void chceckAnswer() {
+	private void checkAnswer(View view) {
 		
 		if (isCorrectAnswerSelected == null) {
 			return;
@@ -163,11 +150,7 @@ public class QuestionsActivity extends AppCompatActivity {
 		startActivity(intent);
 	}
 	
-	
-	// ---- KOŁA RATUNKOWE ----
-	
-	// -- pół na pół
-	private void fireFiftyFiftyButton() {
+	public void fireFiftyFiftyButton(View view) {
 		this.help3B.setVisibility(View.INVISIBLE);
 		switch (currentQuestion.getCorrect()) {
 			case 1:
@@ -182,9 +165,8 @@ public class QuestionsActivity extends AppCompatActivity {
 		}
 	}
 	
-	// -- pytanie do publiczności
 	@RequiresApi(api = Build.VERSION_CODES.N)
-	private void fireAskAudienceButton() {
+	public void fireAskAudienceButton(View view) {
 		this.help2B.setVisibility(View.INVISIBLE);
 		int min = 50;
 		List<Integer> results = new ArrayList<>();
@@ -238,7 +220,7 @@ public class QuestionsActivity extends AppCompatActivity {
 		}
 	}
 	
-	private void fireCallFriendButton() {
+	public void fireCallFriendButton(View view) {
 		this.help1B.setVisibility(View.INVISIBLE);
 		Random rand = new Random();
 		// Siema tu jak masz numer pytania mniejszy niż 5 to zawsze dobra odpowiedź jest
@@ -253,4 +235,5 @@ public class QuestionsActivity extends AppCompatActivity {
 			}
 		}
 	}
+	
 }

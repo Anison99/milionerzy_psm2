@@ -4,8 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/darkBlue"
     tools:context="ui.QuestionsActivity"
-    android:background="@color/darkBlue">
+    tools:ignore="HardcodedText, PxUsage, UsingOnClickInXML">
 
     <ImageView
         android:id="@+id/questionImage"
@@ -13,7 +14,8 @@
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/question_frame" />
+        app:srcCompat="@drawable/question_frame"
+        tools:ignore="ContentDescription" />
 
     <Button
         android:id="@+id/answer1Button"
@@ -72,7 +74,7 @@
         app:layout_constraintVertical_bias="0.737" />
 
     <TextView
-        android:id="@+id/questionNumberLabel"
+        android:id="@+id/questionNumberTextView"
         android:layout_width="154dp"
         android:layout_height="52dp"
         android:gravity="center"
@@ -87,7 +89,7 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/moneyLabel"
+        android:id="@+id/currentPrizeTextView"
         android:layout_width="102dp"
         android:layout_height="33dp"
         android:gravity="center"
@@ -102,7 +104,7 @@
         app:layout_constraintVertical_bias="0.074" />
 
     <TextView
-        android:id="@+id/questionText"
+        android:id="@+id/questionStringTextView"
         android:layout_width="280dp"
         android:layout_height="183dp"
         android:gravity="center"
@@ -121,9 +123,9 @@
         android:layout_width="284dp"
         android:layout_height="36dp"
         android:gravity="center"
+        android:text="podpowiedź"
         android:textColor="@color/white"
         android:textSize="50px"
-        android:text="podpowiedź"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.516"
@@ -132,7 +134,7 @@
         app:layout_constraintVertical_bias="0.137" />
 
     <Button
-        android:id="@+id/checkButton"
+        android:id="@+id/confirmButton"
         android:layout_width="162dp"
         android:layout_height="56dp"
         android:background="#00FFFFFF"
@@ -147,11 +149,11 @@
         app:layout_constraintVertical_bias="0.884" />
 
     <Button
-        android:id="@+id/help1Button"
+        android:id="@+id/callFriendButton"
         android:layout_width="70dp"
         android:layout_height="62dp"
         android:background="#00FFFFFF"
-        android:text="1"
+        android:onClick="fireCallFriendButton"
         android:textColor="#00FFFFFF"
         app:layout_constraintBottom_toBottomOf="@+id/questionImage"
         app:layout_constraintEnd_toEndOf="parent"
@@ -161,11 +163,11 @@
         app:layout_constraintVertical_bias="0.989" />
 
     <Button
-        android:id="@+id/help2Button"
+        android:id="@+id/askAudienceButton"
         android:layout_width="70dp"
         android:layout_height="62dp"
         android:background="#00FFFFFF"
-        android:text="1"
+        android:onClick="fireAskAudienceButton"
         android:textColor="#00FFFFFF"
         app:layout_constraintBottom_toBottomOf="@+id/questionImage"
         app:layout_constraintEnd_toEndOf="parent"
@@ -175,11 +177,11 @@
         app:layout_constraintVertical_bias="0.989" />
 
     <Button
-        android:id="@+id/help3Button"
+        android:id="@+id/fiftyFiftyButton"
         android:layout_width="70dp"
         android:layout_height="62dp"
         android:background="#00FFFFFF"
-        android:text="1"
+        android:onClick="fireFiftyFiftyButton"
         android:textColor="#00FFFFFF"
         app:layout_constraintBottom_toBottomOf="@+id/questionImage"
         app:layout_constraintEnd_toEndOf="parent"
