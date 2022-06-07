@@ -83,4 +83,18 @@
         app:layout_constraintVertical_bias="0.174"
         app:srcCompat="@drawable/milionerzy_logo" />
 
+    <TextView
+        android:layout_width="154dp"
+        android:layout_height="52dp"
+        android:gravity="center"
+        android:text="Zasady"
+        android:textColor="@color/darkBlue"
+        android:textSize="80px"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.01" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
