@@ -19,6 +19,7 @@
 
     <Button
         android:id="@+id/answer1Button"
+        android:onClick="answerButtonSelected"
         android:layout_width="263dp"
         android:layout_height="48dp"
         android:background="#00FFFFFF"
@@ -33,6 +34,7 @@
 
     <Button
         android:id="@+id/answer2Button"
+        android:onClick="answerButtonSelected"
         android:layout_width="263dp"
         android:layout_height="48dp"
         android:background="#00FFFFFF"
@@ -47,6 +49,7 @@
 
     <Button
         android:id="@+id/answer3Button"
+        android:onClick="answerButtonSelected"
         android:layout_width="263dp"
         android:layout_height="48dp"
         android:background="#00FFFFFF"
@@ -61,6 +64,7 @@
 
     <Button
         android:id="@+id/answer4Button"
+        android:onClick="answerButtonSelected"
         android:layout_width="263dp"
         android:layout_height="48dp"
         android:background="#00FFFFFF"
@@ -138,6 +142,7 @@
         android:layout_width="162dp"
         android:layout_height="56dp"
         android:background="#00FFFFFF"
+        android:onClick="confirmAnswer"
         android:text="SPRAWDŹ"
         android:textColor="@color/darkBlue"
         android:textSize="60px"
