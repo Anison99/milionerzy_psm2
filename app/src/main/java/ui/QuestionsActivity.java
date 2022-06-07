@@ -55,10 +55,6 @@ public class QuestionsActivity extends AppCompatActivity {
 	 */
 	Button fiftyFiftyButton = findViewById(R.id.fiftyFiftyButton);
 	
-	/**
-	 * Zatwierdzanie odpowiedzi
-	 */
-	Button confirmButton = findViewById(R.id.confirmButton);
 	private Boolean isCorrectAnswerSelected = null;
 	private static Question currentQuestion = null;
 	

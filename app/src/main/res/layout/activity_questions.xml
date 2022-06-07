@@ -139,10 +139,10 @@
 
     <Button
         android:id="@+id/confirmButton"
+        android:onClick="confirmAnswer"
         android:layout_width="162dp"
         android:layout_height="56dp"
         android:background="#00FFFFFF"
-        android:onClick="confirmAnswer"
         android:text="SPRAWDŹ"
         android:textColor="@color/darkBlue"
         android:textSize="60px"
