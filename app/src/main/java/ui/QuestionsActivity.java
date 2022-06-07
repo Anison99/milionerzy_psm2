@@ -34,7 +34,7 @@ public class QuestionsActivity extends AppCompatActivity {
 	 */
 	TextView questionNumberTextView;
 	/**
-	 * Podpowiedź?
+	 * Podpowiedź telefonu do przyjaciela
 	 */
 	TextView helpText;
 	
@@ -106,14 +106,15 @@ public class QuestionsActivity extends AppCompatActivity {
 	
 	// zmiana koloru po kliknieciu
 	private void resetButtonsColor() {
-		answer1Button.setBackgroundColor(Color.GREEN);
-		answer2Button.setBackgroundColor(Color.GREEN);
-		answer3Button.setBackgroundColor(Color.GREEN);
-		answer4Button.setBackgroundColor(Color.GREEN);
+		answer1Button.setBackgroundColor(Color.YELLOW);
+		answer2Button.setBackgroundColor(Color.YELLOW);
+		answer3Button.setBackgroundColor(Color.YELLOW);
+		answer4Button.setBackgroundColor(Color.YELLOW);
 	}
 	
 	public void answerButtonSelected(View view) {
 		Button selectedButton = findViewById(view.getId());
+		System.out.println("Selected button: "+selectedButton.getId());
 		this.isCorrectAnswerSelected = switch (currentQuestion.getCorrect()) {
 			case 1 -> selectedButton == answer1Button;
 			case 2 -> selectedButton == answer2Button;
@@ -121,6 +122,7 @@ public class QuestionsActivity extends AppCompatActivity {
 			case 4 -> selectedButton == answer4Button;
 			default -> false;
 		};
+		System.out.println("IsCorrect? :"+isCorrectAnswerSelected);
 		resetButtonsColor();
 		selectedButton.setBackgroundColor(Color.MAGENTA);
 	}
