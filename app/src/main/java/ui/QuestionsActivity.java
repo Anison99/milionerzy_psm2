@@ -76,6 +76,7 @@ public class QuestionsActivity extends AppCompatActivity {
 		askAudienceButton = findViewById(R.id.askAudienceButton);
 		fiftyFiftyButton = findViewById(R.id.fiftyFiftyButton);
 		
+		setUpQuestion();
 	}
 	
 	// pobieranie danych z csv i umieszczenie w miejscu txt i przycisków
@@ -96,10 +97,10 @@ public class QuestionsActivity extends AppCompatActivity {
 		this.answer4Button.setText(currentQuestion.getAnswer(Question.Answer.FOURTH));
 		this.currentPrizeTextView.setText(currentQuestion.getPrize() + "$");
 		resetButtonsColor();
-		this.answer1Button.setVisibility(View.INVISIBLE);
-		this.answer2Button.setVisibility(View.INVISIBLE);
-		this.answer3Button.setVisibility(View.INVISIBLE);
-		this.answer4Button.setVisibility(View.INVISIBLE);
+		this.answer1Button.setVisibility(View.VISIBLE);
+		this.answer2Button.setVisibility(View.VISIBLE);
+		this.answer3Button.setVisibility(View.VISIBLE);
+		this.answer4Button.setVisibility(View.VISIBLE);
 		isCorrectAnswerSelected = null;
 	}
 	
@@ -136,6 +137,7 @@ public class QuestionsActivity extends AppCompatActivity {
 				startActivity(new Intent(this, CorrectAnswerActivity.class));
 			}
 		} else {
+			currentQuestion = null;
 			startActivity(new Intent(this, FalseAnswerActivity.class));
 		}
 	}
