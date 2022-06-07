@@ -24,36 +24,36 @@ public class QuestionsActivity extends AppCompatActivity {
 	/**
 	 * Pytanie
 	 */
-	TextView questionT = findViewById(R.id.questionStringTextView);
+	TextView questionStringTextView;
 	/**
 	 * Kwota do wygrania
 	 */
-	TextView moneyL = findViewById(R.id.currentPrizeTextView);
+	TextView currentPrizeTextView;
 	/**
 	 * Numer pytania
 	 */
-	TextView numberQestT = findViewById(R.id.questionNumberTextView);
+	TextView questionNumberTextView;
 	/**
 	 * Podpowiedź?
 	 */
-	TextView helpText = findViewById(R.id.hintTextLabel);
+	TextView helpText;
 	
-	Button answer1Button = findViewById(R.id.answer1Button);
-	Button answer2Button = findViewById(R.id.answer2Button);
-	Button answer3Button = findViewById(R.id.answer3Button);
-	Button answer4Button = findViewById(R.id.answer4Button);
+	Button answer1Button;
+	Button answer2Button;
+	Button answer3Button;
+	Button answer4Button;
 	/**
 	 * Telefon do przyjaciela
 	 */
-	Button callFriendButton = findViewById(R.id.callFriendButton);
+	Button callFriendButton;
 	/**
 	 * Pytanie do publiczności
 	 */
-	Button askAudienceButton = findViewById(R.id.askAudienceButton);
+	Button askAudienceButton;
 	/**
 	 * Pół na pół. Odrzucanie dwóch losowych odpowiedzi
 	 */
-	Button fiftyFiftyButton = findViewById(R.id.fiftyFiftyButton);
+	Button fiftyFiftyButton;
 	
 	private Boolean isCorrectAnswerSelected = null;
 	private static Question currentQuestion = null;
@@ -63,7 +63,19 @@ public class QuestionsActivity extends AppCompatActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_questions);
+		questionStringTextView = findViewById(R.id.questionStringTextView);
+		currentPrizeTextView = findViewById(R.id.currentPrizeTextView);
+		questionNumberTextView = findViewById(R.id.questionNumberTextView);
+		helpText = findViewById(R.id.hintTextLabel);
 		helpText.setText("");
+		answer1Button = findViewById(R.id.answer1Button);
+		answer2Button = findViewById(R.id.answer2Button);
+		answer3Button = findViewById(R.id.answer3Button);
+		answer4Button = findViewById(R.id.answer4Button);
+		callFriendButton = findViewById(R.id.callFriendButton);
+		askAudienceButton = findViewById(R.id.askAudienceButton);
+		fiftyFiftyButton = findViewById(R.id.fiftyFiftyButton);
+		
 	}
 	
 	// pobieranie danych z csv i umieszczenie w miejscu txt i przycisków
@@ -76,13 +88,13 @@ public class QuestionsActivity extends AppCompatActivity {
 					.getRandomQuestion(currentQuestion.getQuestionNumber() + 1);
 		}
 		assert currentQuestion != null;
-		this.questionT.setText(currentQuestion.getQuestionString());
-		this.numberQestT.setText(currentQuestion.getQuestionNumber() + " ");
+		this.questionStringTextView.setText(currentQuestion.getQuestionString());
+		this.questionNumberTextView.setText(currentQuestion.getQuestionNumber() + " ");
 		this.answer1Button.setText(currentQuestion.getAnswer(Question.Answer.FIRST));
 		this.answer2Button.setText(currentQuestion.getAnswer(Question.Answer.SECOND));
 		this.answer3Button.setText(currentQuestion.getAnswer(Question.Answer.THIRD));
 		this.answer4Button.setText(currentQuestion.getAnswer(Question.Answer.FOURTH));
-		this.moneyL.setText(currentQuestion.getPrize() + "$");
+		this.currentPrizeTextView.setText(currentQuestion.getPrize() + "$");
 		resetButtonsColor();
 		this.answer1Button.setVisibility(View.INVISIBLE);
 		this.answer2Button.setVisibility(View.INVISIBLE);
