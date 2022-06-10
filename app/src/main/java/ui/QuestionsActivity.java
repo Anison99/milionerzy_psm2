@@ -115,16 +115,16 @@ public class QuestionsActivity extends AppCompatActivity {
 	public void answerButtonSelected(View view) {
 		Button selectedButton = findViewById(view.getId());
 		System.out.println("Selected button: "+selectedButton.getId());
+
 		this.isCorrectAnswerSelected = switch (currentQuestion.getCorrect()) {
-			case 1 -> selectedButton == answer1Button;
-			case 2 -> selectedButton == answer2Button;
-			case 3 -> selectedButton == answer3Button;
-			case 4 -> selectedButton == answer4Button;
+			case 1 -> answer1Button.getId() == selectedButton.getId();
+			case 2 -> answer2Button.getId() == selectedButton.getId();
+			case 3 -> answer3Button.getId() == selectedButton.getId();
+			case 4 -> answer4Button.getId() == selectedButton.getId();
 			default -> false;
 		};
 		System.out.println("IsCorrect? :"+isCorrectAnswerSelected);
-		resetButtonsColor();
-		selectedButton.setBackgroundColor(Color.MAGENTA);
+		selectedButton.setVisibility(View.INVISIBLE);
 	}
 	
 	public void confirmAnswer(View view) {
@@ -168,49 +168,56 @@ public class QuestionsActivity extends AppCompatActivity {
 		int max = 100;
 		byte iter = 0;
 		boolean test = false;
-		int temp = 0;
+		boolean test2 = false;
+		int temp;
 		do {
-			if (currentQuestion.getAnswersArray()[iter] == currentQuestion
-					.getAnswersArray()[currentQuestion.getCorrect() - 1]) {
+			if (!test && currentQuestion.getAnswersArray()[iter].equals(currentQuestion
+					.getAnswersArray()[currentQuestion.getCorrect() - 1])&& !test2){
 				temp = rand.ints(min, max).findFirst().getAsInt();
 				max = max - temp;
-				min = 0;
+				min = 1;
 				test = true;
 				results.add(temp);
-			}
-			if (test) {
+			} else if (test) {
 				temp = rand.ints(min, max).findFirst().getAsInt();
 				max = max - temp;
 				results.add(temp);
-			} else {
+				if(results.size()==3){
+					test = false;
+					test2 = true;
+				}
+
+			} else if (results.size()==3){
+				results.add(max);
+			}
+			else {
 				iter++;
 			}
 		} while (results.size() != 4);
-		
 		switch (currentQuestion.getCorrect()) {
 			case 1:
-				this.answer1Button.setText(this.answer1Button.getText() + " " + results.get(0));
-				this.answer2Button.setText(this.answer2Button.getText() + " " + results.get(0));
-				this.answer3Button.setText(this.answer3Button.getText() + " " + results.get(0));
-				this.answer4Button.setText(this.answer4Button.getText() + " " + results.get(0));
+				this.answer1Button.setText(this.answer1Button.getText() + " " + results.get(0) + " %");
+				this.answer2Button.setText(this.answer2Button.getText() + " " + results.get(1) + " %");
+				this.answer3Button.setText(this.answer3Button.getText() + " " + results.get(2) + " %");
+				this.answer4Button.setText(this.answer4Button.getText() + " " + results.get(3) + " %");
 				return;
 			case 2:
-				this.answer2Button.setText(this.answer1Button.getText() + " " + results.get(0));
-				this.answer1Button.setText(this.answer2Button.getText() + " " + results.get(0));
-				this.answer3Button.setText(this.answer3Button.getText() + " " + results.get(0));
-				this.answer4Button.setText(this.answer4Button.getText() + " " + results.get(0));
+				this.answer2Button.setText(this.answer2Button.getText() + " " + results.get(0) + " %");
+				this.answer1Button.setText(this.answer1Button.getText() + " " + results.get(1) + " %");
+				this.answer3Button.setText(this.answer3Button.getText() + " " + results.get(2) + " %");
+				this.answer4Button.setText(this.answer4Button.getText() + " " + results.get(3) + " %");
 				return;
 			case 3:
-				this.answer3Button.setText(this.answer1Button.getText() + " " + results.get(0));
-				this.answer2Button.setText(this.answer2Button.getText() + " " + results.get(0));
-				this.answer1Button.setText(this.answer3Button.getText() + " " + results.get(2));
-				this.answer4Button.setText(this.answer4Button.getText() + " " + results.get(3));
+				this.answer3Button.setText(this.answer3Button.getText() + " " + results.get(0) + " %");
+				this.answer2Button.setText(this.answer2Button.getText() + " " + results.get(1) + " %");
+				this.answer1Button.setText(this.answer1Button.getText() + " " + results.get(2) + " %");
+				this.answer4Button.setText(this.answer4Button.getText() + " " + results.get(3) + " %");
 				return;
 			case 4:
-				this.answer4Button.setText(this.answer1Button.getText() + " " + results.get(0));
-				this.answer2Button.setText(this.answer2Button.getText() + " " + results.get(1));
-				this.answer1Button.setText(this.answer3Button.getText() + " " + results.get(2));
-				this.answer3Button.setText(this.answer4Button.getText() + " " + results.get(3));
+				this.answer4Button.setText(this.answer4Button.getText() + " " + results.get(0) + " %");
+				this.answer2Button.setText(this.answer2Button.getText() + " " + results.get(1) + " %");
+				this.answer1Button.setText(this.answer1Button.getText() + " " + results.get(2) + " %");
+				this.answer3Button.setText(this.answer3Button.getText() + " " + results.get(3) + " %");
 		}
 	}
 	@SuppressWarnings("all")
